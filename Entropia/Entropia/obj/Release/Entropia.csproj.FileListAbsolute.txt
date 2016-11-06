@@ -1,0 +1,17 @@
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\bin\Release\Entropia.exe.config
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\bin\Release\Entropia.exe
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\bin\Release\Entropia.pdb
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\obj\Release\Entropia.Form1.resources
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\obj\Release\Entropia.Properties.Resources.resources
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\obj\Release\Entropia.csproj.GenerateResource.Cache
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\obj\Release\Entropia.exe
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\obj\Release\Entropia.pdb
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\bin\Release\Entropia.exe.config
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Release\Entropia.exe
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Release\Entropia.pdb
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\bin\Release\Entropia.exe
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\bin\Release\Entropia.pdb
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Release\Entropia.Form1.resources
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Release\Entropia.Properties.Resources.resources
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Release\Entropia.csproj.GenerateResource.Cache
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Release\Entropia.csprojResolveAssemblyReference.cache

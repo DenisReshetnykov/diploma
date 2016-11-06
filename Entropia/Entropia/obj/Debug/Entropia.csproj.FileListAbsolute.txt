@@ -1,0 +1,30 @@
+c:\users\vaha\documents\visual studio 2012\Projects\Entropia\Entropia\bin\Debug\Entropia.exe.config
+c:\users\vaha\documents\visual studio 2012\Projects\Entropia\Entropia\bin\Debug\Entropia.exe
+c:\users\vaha\documents\visual studio 2012\Projects\Entropia\Entropia\bin\Debug\Entropia.pdb
+c:\users\vaha\documents\visual studio 2012\Projects\Entropia\Entropia\obj\Debug\Entropia.csprojResolveAssemblyReference.cache
+c:\users\vaha\documents\visual studio 2012\Projects\Entropia\Entropia\obj\Debug\Entropia.Form1.resources
+c:\users\vaha\documents\visual studio 2012\Projects\Entropia\Entropia\obj\Debug\Entropia.Properties.Resources.resources
+c:\users\vaha\documents\visual studio 2012\Projects\Entropia\Entropia\obj\Debug\Entropia.csproj.GenerateResource.Cache
+c:\users\vaha\documents\visual studio 2012\Projects\Entropia\Entropia\obj\Debug\Entropia.exe
+c:\users\vaha\documents\visual studio 2012\Projects\Entropia\Entropia\obj\Debug\Entropia.pdb
+c:\users\vaha\documents\visual studio 2012\Projects\Entropia\Entropia\bin\Debug\ru-ru\DynamicDataDisplay.resources.dll
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\bin\Debug\Entropia.exe.config
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\obj\Debug\Entropia.exe
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\obj\Debug\Entropia.pdb
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\bin\Debug\Entropia.exe
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\bin\Debug\Entropia.pdb
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\bin\Debug\ru-ru\DynamicDataDisplay.resources.dll
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\obj\Debug\Entropia.csprojResolveAssemblyReference.cache
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\obj\Debug\Entropia.Form1.resources
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\obj\Debug\Entropia.Properties.Resources.resources
+C:\Users\VAHA\Desktop\Cтарый интерфейс\Entropia\Entropia\obj\Debug\Entropia.csproj.GenerateResource.Cache
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\bin\Debug\Entropia.exe.config
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Debug\Entropia.exe
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Debug\Entropia.pdb
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\bin\Debug\Entropia.exe
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\bin\Debug\Entropia.pdb
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\bin\Debug\ru-ru\DynamicDataDisplay.resources.dll
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Debug\Entropia.csprojResolveAssemblyReference.cache
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Debug\Entropia.Form1.resources
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Debug\Entropia.Properties.Resources.resources
+C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Debug\Entropia.csproj.GenerateResource.Cache
