@@ -28,3 +28,13 @@ C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Debug\En
 C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Debug\Entropia.Form1.resources
 C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Debug\Entropia.Properties.Resources.resources
 C:\Users\VAHA\Desktop\Рабочий диплом\Entropia\Entropia\obj\Debug\Entropia.csproj.GenerateResource.Cache
+C:\Users\VAHA\Desktop\diploma\Entropia\Entropia\bin\Debug\Entropia.exe.config
+C:\Users\VAHA\Desktop\diploma\Entropia\Entropia\obj\Debug\Entropia.exe
+C:\Users\VAHA\Desktop\diploma\Entropia\Entropia\obj\Debug\Entropia.pdb
+C:\Users\VAHA\Desktop\diploma\Entropia\Entropia\bin\Debug\Entropia.exe
+C:\Users\VAHA\Desktop\diploma\Entropia\Entropia\bin\Debug\Entropia.pdb
+C:\Users\VAHA\Desktop\diploma\Entropia\Entropia\bin\Debug\ru-ru\DynamicDataDisplay.resources.dll
+C:\Users\VAHA\Desktop\diploma\Entropia\Entropia\obj\Debug\Entropia.csprojResolveAssemblyReference.cache
+C:\Users\VAHA\Desktop\diploma\Entropia\Entropia\obj\Debug\Entropia.Form1.resources
+C:\Users\VAHA\Desktop\diploma\Entropia\Entropia\obj\Debug\Entropia.Properties.Resources.resources
+C:\Users\VAHA\Desktop\diploma\Entropia\Entropia\obj\Debug\Entropia.csproj.GenerateResource.Cache

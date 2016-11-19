@@ -46,16 +46,18 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.labStatus = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.boxSigm = new System.Windows.Forms.ComboBox();
@@ -68,6 +70,7 @@
             this.chartClear = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.mainChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.labStatus1 = new System.Windows.Forms.Label();
             this.btnSaveE = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -85,6 +88,10 @@
             this.chartEntr2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartEntr1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.chartPortret2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.labStatus2 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.chartPortret = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -103,16 +110,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выбратьФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.labStatus = new System.Windows.Forms.Label();
-            this.labStatus1 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.labStatus2 = new System.Windows.Forms.Label();
-            this.colorChoose = new System.Windows.Forms.ColorDialog();
             this.цветToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выбратьЦветГрафиковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.chartPortret2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.colorChoose = new System.Windows.Forms.ColorDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -125,12 +126,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartEntr2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartEntr1)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPortret2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPortret)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartPortret2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -160,6 +161,15 @@
             this.tabPage1.Text = "Сигнал";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // labStatus
+            // 
+            this.labStatus.AutoSize = true;
+            this.labStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labStatus.Location = new System.Drawing.Point(10, 483);
+            this.labStatus.Name = "labStatus";
+            this.labStatus.Size = new System.Drawing.Size(2, 15);
+            this.labStatus.TabIndex = 28;
             // 
             // panel1
             // 
@@ -350,6 +360,15 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Энтропия";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // labStatus1
+            // 
+            this.labStatus1.AutoSize = true;
+            this.labStatus1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labStatus1.Location = new System.Drawing.Point(12, 483);
+            this.labStatus1.Name = "labStatus1";
+            this.labStatus1.Size = new System.Drawing.Size(2, 15);
+            this.labStatus1.TabIndex = 30;
             // 
             // btnSaveE
             // 
@@ -558,6 +577,66 @@
             this.tabPage3.Text = "Фазовый портрет";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // chartPortret2
+            // 
+            this.chartPortret2.BorderlineColor = System.Drawing.Color.Black;
+            this.chartPortret2.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea5.Name = "ChartArea1";
+            this.chartPortret2.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartPortret2.Legends.Add(legend5);
+            this.chartPortret2.Location = new System.Drawing.Point(383, 46);
+            this.chartPortret2.Name = "chartPortret2";
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.IsVisibleInLegend = false;
+            series9.Legend = "Legend1";
+            series9.MarkerColor = System.Drawing.Color.Blue;
+            series9.Name = "Series1";
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series10.IsVisibleInLegend = false;
+            series10.Legend = "Legend1";
+            series10.MarkerSize = 4;
+            series10.Name = "Series2";
+            series11.BorderWidth = 2;
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series11.IsVisibleInLegend = false;
+            series11.Legend = "Legend1";
+            series11.Name = "Series3";
+            this.chartPortret2.Series.Add(series9);
+            this.chartPortret2.Series.Add(series10);
+            this.chartPortret2.Series.Add(series11);
+            this.chartPortret2.Size = new System.Drawing.Size(342, 324);
+            this.chartPortret2.TabIndex = 32;
+            this.chartPortret2.Text = "chart1";
+            // 
+            // labStatus2
+            // 
+            this.labStatus2.AutoSize = true;
+            this.labStatus2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labStatus2.Location = new System.Drawing.Point(9, 483);
+            this.labStatus2.Name = "labStatus2";
+            this.labStatus2.Size = new System.Drawing.Size(2, 15);
+            this.labStatus2.TabIndex = 31;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(480, 260);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(0, 13);
+            this.label13.TabIndex = 30;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(472, 252);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(0, 13);
+            this.label12.TabIndex = 29;
+            // 
             // chartPortret
             // 
             this.chartPortret.BorderlineColor = System.Drawing.Color.Black;
@@ -568,21 +647,21 @@
             this.chartPortret.Legends.Add(legend6);
             this.chartPortret.Location = new System.Drawing.Point(12, 46);
             this.chartPortret.Name = "chartPortret";
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series11.IsVisibleInLegend = false;
-            series11.Legend = "Legend1";
-            series11.MarkerColor = System.Drawing.Color.Blue;
-            series11.Name = "Series1";
             series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series12.IsVisibleInLegend = false;
             series12.Legend = "Legend1";
-            series12.MarkerSize = 4;
-            series12.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series12.Name = "Series2";
-            this.chartPortret.Series.Add(series11);
+            series12.MarkerColor = System.Drawing.Color.Blue;
+            series12.Name = "Series1";
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series13.IsVisibleInLegend = false;
+            series13.Legend = "Legend1";
+            series13.MarkerSize = 4;
+            series13.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series13.Name = "Series2";
             this.chartPortret.Series.Add(series12);
+            this.chartPortret.Series.Add(series13);
             this.chartPortret.Size = new System.Drawing.Size(342, 324);
             this.chartPortret.TabIndex = 14;
             this.chartPortret.Text = "chart1";
@@ -745,58 +824,6 @@
             this.выбратьФайлToolStripMenuItem.Text = "Выбрать файл";
             this.выбратьФайлToolStripMenuItem.Click += new System.EventHandler(this.выбратьФайлToolStripMenuItem_Click);
             // 
-            // panel4
-            // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.tabControl1);
-            this.panel4.Location = new System.Drawing.Point(0, 27);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(959, 533);
-            this.panel4.TabIndex = 2;
-            // 
-            // labStatus
-            // 
-            this.labStatus.AutoSize = true;
-            this.labStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labStatus.Location = new System.Drawing.Point(10, 483);
-            this.labStatus.Name = "labStatus";
-            this.labStatus.Size = new System.Drawing.Size(2, 15);
-            this.labStatus.TabIndex = 28;
-            // 
-            // labStatus1
-            // 
-            this.labStatus1.AutoSize = true;
-            this.labStatus1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labStatus1.Location = new System.Drawing.Point(12, 483);
-            this.labStatus1.Name = "labStatus1";
-            this.labStatus1.Size = new System.Drawing.Size(2, 15);
-            this.labStatus1.TabIndex = 30;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(472, 252);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(0, 13);
-            this.label12.TabIndex = 29;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(480, 260);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(0, 13);
-            this.label13.TabIndex = 30;
-            // 
-            // labStatus2
-            // 
-            this.labStatus2.AutoSize = true;
-            this.labStatus2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labStatus2.Location = new System.Drawing.Point(9, 483);
-            this.labStatus2.Name = "labStatus2";
-            this.labStatus2.Size = new System.Drawing.Size(2, 15);
-            this.labStatus2.TabIndex = 31;
-            // 
             // цветToolStripMenuItem
             // 
             this.цветToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -812,33 +839,14 @@
             this.выбратьЦветГрафиковToolStripMenuItem.Text = "Выбрать цвет графиков";
             this.выбратьЦветГрафиковToolStripMenuItem.Click += new System.EventHandler(this.выбратьЦветГрафиковToolStripMenuItem_Click);
             // 
-            // chartPortret2
+            // panel4
             // 
-            this.chartPortret2.BorderlineColor = System.Drawing.Color.Black;
-            this.chartPortret2.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea5.Name = "ChartArea1";
-            this.chartPortret2.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartPortret2.Legends.Add(legend5);
-            this.chartPortret2.Location = new System.Drawing.Point(383, 46);
-            this.chartPortret2.Name = "chartPortret2";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series9.IsVisibleInLegend = false;
-            series9.Legend = "Legend1";
-            series9.MarkerColor = System.Drawing.Color.Blue;
-            series9.Name = "Series1";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series10.IsVisibleInLegend = false;
-            series10.Legend = "Legend1";
-            series10.MarkerSize = 4;
-            series10.Name = "Series2";
-            this.chartPortret2.Series.Add(series9);
-            this.chartPortret2.Series.Add(series10);
-            this.chartPortret2.Size = new System.Drawing.Size(342, 324);
-            this.chartPortret2.TabIndex = 32;
-            this.chartPortret2.Text = "chart1";
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.tabControl1);
+            this.panel4.Location = new System.Drawing.Point(0, 27);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(959, 533);
+            this.panel4.TabIndex = 2;
             // 
             // Form1
             // 
@@ -871,6 +879,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartEntr1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPortret2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPortret)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -879,7 +888,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartPortret2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -18,7 +18,39 @@ namespace Entropia
 {
 
 
+    public struct PointD
+    {
+        public double X;
+        public double Y;
 
+        public PointD(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public Point ToPoint()
+        {
+            return new Point((int)X, (int)Y);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is PointD && this == (PointD)obj;
+        }
+        public override int GetHashCode()
+        {
+            return X.GetHashCode() ^ Y.GetHashCode();
+        }
+        public static bool operator ==(PointD a, PointD b)
+        {
+            return a.X == b.X && a.Y == b.Y;
+        }
+        public static bool operator !=(PointD a, PointD b)
+        {
+            return !(a == b);
+        }
+    } 
 
 
 
@@ -1401,7 +1433,7 @@ namespace Entropia
             double[] normPohidna = norma(pohidnaS);
 
             double[] normNewsho = norma(sho);
-
+            double[] shoVO = sho;
 
 
           //  for (int i = 0; i < normNewsho.Length; i++)
@@ -1409,6 +1441,7 @@ namespace Entropia
 
 
             double[] newsho = new double[normNewsho.Length - 6 - 2 * int.Parse(txtSglaj.Text)];
+            double[] masYY = new double[normNewsho.Length - 6 - 2 * int.Parse(txtSglaj.Text)];
 
          //   for (int i = 0; i < normNewsho.Length; i++)
           //      MessageBox.Show("# " + normNewsho[i]);
@@ -1418,9 +1451,36 @@ namespace Entropia
             {
                // MessageBox.Show("i " + i + "  " + normNewsho[i].ToString());
                 newsho[jj] = normNewsho[i];
-                //newsho[jj] = sho[i];
+                masYY[jj] = sho[i];
                 jj++;
+
             }
+
+
+           // int razm = (int)(maxArray(sho)-minArray(sho));
+            double [,] pixeldata = new double [100,800];
+
+            double[] masX = new double[normPohidna.Length];
+            double[] masY = new double[normPohidna.Length];
+
+            for (int i = 0; i < normPohidna.Length; i++)
+            {
+                //masX[i] = Math.Round(normPohidna[i], 2);
+               // masY[i] = Math.Round(masYY[i], 1);
+                masX[i] = normPohidna[i];
+                masY[i] = masYY[i];
+            }   
+
+            //MessageBox.Show((maxArray(masY)-minArray(masY)).ToString());
+/*
+            for (int i = 0; i < pixeldata.Length; i++)
+            {
+                for (int j = 0; j < pixeldata.GetLength(i); j++)
+                {
+ 
+                }
+            }
+        */    
 
 
 
@@ -1483,7 +1543,255 @@ namespace Entropia
             chartPortret2.Series["Series2"].Color = Color.Red;
 
 
+           // MessageBox.Show((angle(2, 8, 5, 1, 1, 2)).ToString());
 
+           //VO(normPohidna, newsho, chartPortret,0);
+
+
+
+
+            PointD[] data = new PointD[normPohidna.Length];
+
+            for (int i = 0; i < normPohidna.Length; i++)
+            {
+                data[i].X = normPohidna[i];
+                data[i].Y = newsho[i];
+            }
+
+            List<int> a = ConvexHullJarvis(data);
+
+           // for (int i = 0; i < a.Count; i++)
+              //  MessageBox.Show("# " + i + " " + a[i].ToString());
+
+           // double[] xxx = { data[11].X, data[9].X, data[8].X, data[6].X, data[5].X, data[4].X, data[2].X, data[0].X, data[11].X };
+           // double[] yyy = { data[11].Y, data[9].Y, data[8].Y, data[6].Y, data[5].Y, data[4].Y, data[2].Y, data[0].Y, data[11].Y };
+
+            double[] VOx = new double[a.Count];
+            double[] VOy = new double[a.Count];
+
+            for (int i = 0; i < a.Count; i++)
+            {
+                VOx[i] = data[a[i]].X;
+                VOy[i] = data[a[i]].Y;
+            }
+
+
+
+
+            chartPortret2.Series["Series3"].Points.DataBindXY(VOx, VOy);
+
+            chartPortret2.Series["Series3"].Color = Color.Indigo;
+
+
+
+
+        }
+
+
+
+
+        public List<int> ConvexHullJarvis(PointD[] mas)
+        {
+            List<int> convex = new List<int>();
+            int _base = 0;
+            for (int i = 1; i < mas.Length; i++)
+            {
+                if (mas[i].Y < mas[_base].Y)
+                    _base = i;
+                else
+                    if (mas[i].Y.Equals(mas[_base].Y) && mas[i].X < mas[_base].X)
+                        _base = i;
+            }
+            // эта точка точно входит в выпуклую оболочку 
+            convex.Add(_base);
+
+            PointD first = mas[_base];
+            PointD cur = first;
+            PointD prev = new PointD(first.X - 1, first.Y);
+            do
+            {
+                double minCosAngle = 1e9; // чем больше угол, тем меньше его косинус 
+                double maxLen = 1e9;
+                int next = -1;
+                for (int i = 0; i < mas.Length; i++)
+                {
+                    double curCosAngle = CosAngle(prev, cur, mas[i]);
+
+                    if (curCosAngle < minCosAngle)
+                    {
+                        next = i;
+                        minCosAngle = curCosAngle;
+                        maxLen = dist(cur, mas[i]);
+                    }
+                    else if (EqualsD(curCosAngle, minCosAngle))
+                    {
+                        double curLen = dist(cur, mas[i]);
+                        if (curLen > maxLen)
+                        {
+                            next = i;
+                            maxLen = curLen;
+                        }
+                    }
+                }
+                prev = cur;
+                cur = mas[next];
+                convex.Add(next);
+            }
+            while (cur != first);
+
+            return convex;
+        }
+
+        public bool EqualsD(double a, double b)
+        {
+            if (Math.Abs((a - b)) < 0.000001)
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public double dist(PointD a, PointD b)
+        {
+
+            return Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
+
+        }
+
+        public double CosAngle(PointD xx, PointD yy, PointD zz)
+        {
+            PointD a = new PointD((yy.X - xx.X), (yy.Y - xx.Y));
+            PointD b = new PointD((yy.X - zz.X), (yy.Y - zz.Y));
+
+            return (a.X * b.X + a.Y * b.Y) / ((Math.Sqrt(a.X * a.X + a.Y * a.Y) * Math.Sqrt(b.X * b.X + b.Y * b.Y)));
+            ;
+        } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void VO(double[] x, double[] y, Chart chartProtret,int nameChart)
+        {
+            double p0 = x[0], p1 = x[0];
+            int p0ind=0, p1ind=0;
+
+            for (int i = 0; i < x.Length; i++)
+            {
+                if (x[i] < p0)
+                {
+                    p0 = x[i];
+                    p0ind = i;
+                }
+
+                if (x[i] > p1)
+                {
+                    p1 = x[i];
+                    p1ind = i;
+                }
+            }
+
+
+            double[] mas1 = { p0, p1 };
+            double[] mas2 = { y[p0ind], y[p1ind] };
+
+            MessageBox.Show(p0.ToString() + " " + p1.ToString());
+            MessageBox.Show(y[p0ind].ToString() + " " + y[p1ind].ToString());
+
+            chartProtret.Series.Add("SeriesLine");
+            chartProtret.Series["SeriesLine"].ChartType = SeriesChartType.Line;
+            chartProtret.Series["SeriesLine"].Points.DataBindXY(mas1, mas2);
+            chartProtret.Series["SeriesLine"].IsVisibleInLegend = false;
+            chartProtret.Series["SeriesLine"].Color = Color.Red;
+
+            rekVO(p0, p1, p0ind, p1ind, x, y, chartProtret, 0);
+        }
+        private void rekVO(double p0, double p1, int p0ind, int p1ind, double[] x, double[] y, Chart chartProtret, int nameChart)
+        {
+            double[] mas1 = { p0, p1 };
+            double[] mas2 = { y[p0ind], y[p1ind] };
+
+            double bufAngle = 300;
+            int x3 = 0, y3 = 0;
+            for (int i = 0; i < x.Length; i++)
+            {
+                if (i == 386)
+                {
+                    MessageBox.Show("ANGLE386 " + angle(p0, x[i], p1, y[p0ind], y[i], y[p1ind]).ToString());
+                    continue;
+                }
+                if (i == 383)
+                {
+                   // MessageBox.Show("ANGLE386 " + angle(p0, x[i], p1, y[p0ind], y[i], y[p1ind]).ToString());
+                    continue;
+                }
+
+
+                if (i == 94)
+                {
+                    MessageBox.Show("ANGLE2 " + angle(p0, x[i], p1, y[p0ind], y[i], y[p1ind]).ToString());
+                }
+
+                if(ifAbove(p0,p1,y[p0ind],y[p1ind],x[i],y[i]))
+                {
+                    //MessageBox.Show("ANGLE " + angle(p0, x[i], p1, y[p0ind], y[i], y[p1ind]).ToString());
+                    if (angle(p0, p1, x[i], y[p0ind], y[p1ind], y[i]) < bufAngle)
+                    {
+                        bufAngle = angle(p0, p1, x[i], y[p0ind], y[p1ind], y[i]);
+                        x3 = i;
+                    }
+                }
+                
+                //MessageBox.Show("ANGLE "+ angle(p0, x[i], p1, y[p0ind], y[i], y[p1ind]).ToString());
+            }
+            MessageBox.Show(x3.ToString());
+
+            this.chartPortret.Series.Add("ch1");
+            double[] xx1 = { x[x3] };
+            double[] xx2 = { y[x3] };
+            chartProtret.Series["ch1"].ChartType = SeriesChartType.Point;
+            chartProtret.Series["ch1"].Points.DataBindXY(xx1, xx2);
+            chartProtret.Series["ch1"].IsVisibleInLegend = false;
+            chartProtret.Series["ch1"].Color = Color.Black;
+
+
+        }
+
+
+        private double angle(double x0, double x1, double x2, double y0, double y1, double y2)
+        {
+            double kut = 0;
+
+           
+            
+            double chis = (x2 - x1) * (x2 - x0) + (y2 - y1) * (y2 - y0);
+           
+            double znam = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)) * Math.Sqrt((x2 - x0) * (x2 - x0) + (y2 - y0) * (y2 - y0));
+
+            kut = Math.Acos(chis / znam)*180/Math.PI;
+            
+            return kut;
+        }
+
+        private bool ifAbove(double x0, double x1, double y0, double y1, double xx, double yy)
+        {
+            double reuslt = y0 + ((xx-x0)*(y1-y0))/(x1-x0);
+            if (reuslt < yy)
+                return true;
+            else
+                return false;
         }
 
         private void BoxEntr_SelectedIndexChanged(object sender, EventArgs e)
