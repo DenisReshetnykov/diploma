@@ -837,166 +837,7 @@ namespace Entropia
 
         private void btnDraw_Click(object sender, EventArgs e)
         {
-            /*
-            Value.Clear();
-            Value2.Clear();
-            if (!flag)
-            {
-                MessageBox.Show("Выберите файл");
-                return;
-            }
 
-            string[] lines = System.IO.File.ReadAllLines(@FileName);
-
-            // Display the file contents by using a foreach loop. 
-            foreach (string line in lines)
-            {
-                // Use a tab to indent each line of the file.
-                Value.Add(line);
-                // MessageBox.Show("\t" + line);
-            }
-
-
-
-            string[] array = Value.ToArray(typeof(string)) as string[];
-            //  list = Value.Cast<double>().ToList();
-            double[] bufferArray = new double[Value.Count];
-            for (int i = 0; i < Value.Count; i++)
-            {
-                bufferArray[i] = double.Parse(array[i], System.Globalization.CultureInfo.InvariantCulture);
-            }
-
-            if (!checkIter0.Checked)
-            {
-                if (checkIter1.Checked)
-                    iterNumber = 1;
-                else
-                    iterNumber = 2;
-
-
-                if (checkSigm1.Checked)
-                    sigmNumber = 1;
-                else
-                {
-                    if (checkSigm2.Checked)
-                        sigmNumber = 2;
-                    else
-                    {
-                        if (checkSigm3.Checked)
-                            sigmNumber = 3;
-                        else 
-                        {
-                            if (checkSigm15.Checked)
-                                sigmNumber = 1.5;
-                            else
-                                sigmNumber = 2.5;
-                        }
-                    }
-                }
-                
-                UpBound = sred(bufferArray) + sko(bufferArray) * sigmNumber;
-                BotBound = sred(bufferArray) - sko(bufferArray) * sigmNumber;
-
-                List<double> buff = new List<double>();
-
-                double[] promArray = medf(bufferArray, sigmNumber);
-                double[] promArray2;
-
-
-                for (int i = 0; i < promArray.Length; i++)
-                    Value2.Add(promArray[i]);
-
-                if (iterNumber == 2) // 2 itteracii
-                {
-                    promArray2 = medf(promArray, sigmNumber);
-                    UpBound = sred(promArray) + sko(promArray) * sigmNumber;
-                    BotBound = sred(promArray) - sko(promArray) * sigmNumber;
-                    Value2.Clear();
-                    for (int i = 0; i < promArray2.Length; i++)
-                        Value2.Add(promArray2[i]);
-                }
-                checkValue = false;
-            }
-            else
-            {
-                for (int i = 0; i < Value.Count; i++)
-                    Value2.Add(Value[i]);
-
-                checkValue = true;
-
-               // chartClear.Series["ser2"].Dispose();
-               // chartClear.Series["ser3"].Dispose();
-            }
-
-
-            //  MessageBox.Show("mini: "+mini(Value2,false));
-            //  MessageBox.Show("mini: " + maxi(Value));
-
-            int[] arrX = new int[Value.Count];
-            double[] skoA = new double[Value.Count];
-            double[] skoB = new double[Value.Count];
-
-            for (int i = 0; i < arrX.Length; i++)
-            {
-                arrX[i] = i;
-                skoA[i] = UpBound;
-                skoB[i] = BotBound;
-
-            }
-
-            int[] arrX2 = new int[Value2.Count];
-            double[] skoA2 = new double[Value2.Count];
-            double[] skoB2 = new double[Value2.Count];
-
-            for (int i = 0; i < arrX2.Length; i++)
-            {
-                arrX2[i] = i;
-                skoA2[i] = UpBound;
-                skoB2[i] = BotBound;
-
-            }
-
-
-            for (int i = 0; i < Value.Count; i++)
-            {
-                //  MessageBox.Show("i: " + skoA[i].ToString());
-            }
-
-            this.mainChart.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.DashDotDot;
-            this.mainChart.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.DashDotDot;
-            mainChart.ChartAreas[0].AxisX.Minimum = 0.0;
-            mainChart.ChartAreas[0].AxisY.Minimum = Math.Round(mini(Value, true)) - 100;
-            mainChart.ChartAreas[0].AxisY.Maximum = Math.Round(maxi(Value, true)) + 100; ;
-
-            mainChart.Series["ser1"].Points.DataBindXY(arrX, Value);
-            mainChart.Series["ser2"].Points.DataBindXY(arrX, skoA);
-            mainChart.Series["ser2"].Color = Color.Red;
-            mainChart.Series["ser3"].Points.DataBindXY(arrX, skoB);
-            mainChart.Series["ser3"].Color = Color.Red;
-            mainChart.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
-
-            
-            mainChart.ChartAreas[0].AxisY.Title = "RR, ms";
-
-            this.chartClear.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
-            this.chartClear.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
-
-            chartClear.ChartAreas[0].AxisX.Minimum = 0.0;
-            chartClear.ChartAreas[0].AxisY.Minimum = Math.Round(mini(Value2, checkValue)) - 100;
-            chartClear.ChartAreas[0].AxisY.Maximum = Math.Round(maxi(Value2, checkValue)) + 100; ;
-
-
-            chartClear.Series["ser1"].Points.DataBindXY(arrX2, Value2);
-            chartClear.Series["ser2"].Points.DataBindXY(arrX2, skoA2);
-            chartClear.Series["ser2"].Color = Color.Red;
-            chartClear.Series["ser3"].Points.DataBindXY(arrX2, skoB2);
-            chartClear.Series["ser3"].Color = Color.Red;
-            chartClear.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
-
-            
-            chartClear.ChartAreas[0].AxisY.Title = "RR, ms";
-
-*/
 
         }
 
@@ -1424,15 +1265,15 @@ namespace Entropia
 
 
 
-          
 
 
-            
 
 
-            double[] normPohidna = norma(pohidnaS);
+            // MessageBox.Show("MAX " + maxArray(sho).ToString() + " " + minArray(sho).ToString());
 
-            double[] normNewsho = norma(sho);
+             double[] normPohidna = norma(pohidnaS, minArray(pohidnaS), maxArray(pohidnaS));
+             double[] normNewsho = norma(sho, 62.72, 136.4211);
+             //double[] normNewsho = norma(sho,minArray(sho), maxArray(sho));
             double[] shoVO = sho;
 
 
@@ -1994,14 +1835,14 @@ namespace Entropia
             return result;
         }
 
-        public static double[] norma(double[] x)
+        public static double[] norma(double[] x,double minx,double maxx)
         {
             double [] x2 = new double [x.Length];
-            double minx = 0;
-            double maxx = 0;
+           // double minx = 0;
+           // double maxx = 0;
 
-            minx = minArray(x);
-            maxx = maxArray(x);
+           // minx = minArray(x);
+           // maxx = maxArray(x);
 
             for (int i = 0; i < x.Length; i++)
             {
