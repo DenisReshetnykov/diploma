@@ -12,6 +12,7 @@ using System.Collections;
 using System.Dynamic;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Runtime.InteropServices;
+using System.Drawing.Drawing2D;
 
 
 namespace Entropia
@@ -74,6 +75,12 @@ namespace Entropia
        public static double[] pohidnaSave;
        public static double[] clearSignal;
        public static bool ifcalc = false;
+       public static bool ifDamaged = false;
+       public static double masshXmin;
+       public static double masshYmin ;
+       public static double masshXmax ;
+       public static double masshYmax;
+
 
        protected override void OnFormClosing(FormClosingEventArgs e)
        {
@@ -85,10 +92,48 @@ namespace Entropia
        private void auto_read()
        {
            
+           if (INI.ReadINI("Entr", "masshXmin") == "")
+           {
+               ifDamaged = true;
+               masshXmin = -1.2096;
+           }
+           else
+               masshXmin = double.Parse(INI.ReadINI("Entr", "masshXmin"));
+
+           if (INI.ReadINI("Entr", "masshXmax") == "")
+           {
+               ifDamaged = true;
+               masshXmax = 1.671;
+
+           }
+           else
+               masshXmax = double.Parse(INI.ReadINI("Entr", "masshXmax"));
+
+           if (INI.ReadINI("Entr", "masshYmin") == "")
+           {
+               ifDamaged = true;
+               masshYmin = 65.802;
+           }
+           else
+               masshYmin = double.Parse(INI.ReadINI("Entr", "masshYmin"));
+
+           if (INI.ReadINI("Entr", "masshYmax") == "")
+           {
+               ifDamaged = true;
+               masshYmax = 135.25796;
+           }
+           else
+               masshYmax = double.Parse(INI.ReadINI("Entr", "masshYmax"));
+
+
+
+
+
            string iterstring = INI.ReadINI("Entr", "iterCount");
            if (iterstring == "")
            {
-               MessageBox.Show("Значение количества иттераций задано по умолчанию");
+              // MessageBox.Show("Значение количества иттераций задано по умолчанию");
+               ifDamaged = true;
                checkIter0.Checked = true;
            }
            else
@@ -110,7 +155,8 @@ namespace Entropia
 
            if (INI.ReadINI("Entr", "sigmCount") == "")
            {
-               MessageBox.Show("Значение количества СКО задано по умолчанию");
+               //MessageBox.Show("Значение количества СКО задано по умолчанию");
+               ifDamaged = true;
                boxSigm.SelectedIndex = 4;
            }
            else
@@ -122,6 +168,7 @@ namespace Entropia
            if (INI.ReadINI("Entr", "tabControl") == "")
            {
               // MessageBox.Show("Значение количества СКО задано по умолчанию");
+               ifDamaged = true;
                tabControl1.SelectedIndex = 0;
            }
            else
@@ -135,7 +182,8 @@ namespace Entropia
 
            if (INI.ReadINI("Entr", "txtPorog") == "")
            {
-               MessageBox.Show("Значение порога задано по умолчанию");
+               //MessageBox.Show("Значение порога задано по умолчанию");
+               ifDamaged = true;
                txtPorog.Text = "50";
            }
            else
@@ -150,7 +198,8 @@ namespace Entropia
 
            if (porogstring == "")
            {
-               MessageBox.Show("Тип порога задан по умолчанию");
+              // MessageBox.Show("Тип порога задан по умолчанию");
+               ifDamaged = true;
                rbAbs.Checked = true;
            }
            else
@@ -163,7 +212,8 @@ namespace Entropia
 
            if (INI.ReadINI("Entr", "boxEntr") == "")
            {
-               MessageBox.Show("Тип энтропии задан по умолчанию");
+               //MessageBox.Show("Тип энтропии задан по умолчанию");
+               ifDamaged = true;
                BoxEntr.SelectedIndex = 0;
            }
            else
@@ -173,7 +223,8 @@ namespace Entropia
 
            if (INI.ReadINI("Entr", "txtOkno") == "")
            {
-               MessageBox.Show("Значение окна задано по умолчанию");
+              // MessageBox.Show("Значение окна задано по умолчанию");
+               ifDamaged = true;
                txtOkno.Text = "50";
            }
            else
@@ -184,7 +235,8 @@ namespace Entropia
 
            if (INI.ReadINI("Entr", "txtSglaj") == "")
            {
-               MessageBox.Show("Значение окна сглаживания задано по умолчанию");
+               ifDamaged = true;
+               //MessageBox.Show("Значение окна сглаживания задано по умолчанию");
                txtSglaj.Text = "11";
            }
            else
@@ -196,6 +248,7 @@ namespace Entropia
            if (INI.ReadINI("Entr", "checkLine") == "")
            {
              //  MessageBox.Show("Значение окна сглаживания задано по умолчанию");
+               ifDamaged = true;
                checkLine.Checked = true;
            }
            else
@@ -208,6 +261,7 @@ namespace Entropia
            if (INI.ReadINI("Entr", "checkPoint") == "")
            {
                //  MessageBox.Show("Значение окна сглаживания задано по умолчанию");
+               ifDamaged = true;
                checkPoint.Checked = true;
            }
            else
@@ -220,7 +274,8 @@ namespace Entropia
 
            if (analizstring == "")
            {
-               MessageBox.Show("Вид анализа задан по умолчанию");
+              // MessageBox.Show("Вид анализа задан по умолчанию");
+               ifDamaged = true;
                rbVO.Checked = true;
            }
            else
@@ -231,9 +286,18 @@ namespace Entropia
                    rbVO.Checked = true;
            }
 
-
-           color = Color.FromArgb(Convert.ToInt32(INI.ReadINI("Entr", "color")));
+           if (INI.ReadINI("Entr", "color") == "")
+           {
+               color = Color.Black;
+               ifDamaged = true;
+           }
+           else
+           {
+               color = Color.FromArgb(Convert.ToInt32(INI.ReadINI("Entr", "color")));
+           }
            
+           if(ifDamaged)
+               MessageBox.Show("Файл с конфигурацией был поврежден. Создан новый файл.");
 
        }
 
@@ -275,6 +339,10 @@ namespace Entropia
 
            INI.Write("Entr", "color", color.ToArgb().ToString());
 
+           INI.Write("Entr", "masshXmin", masshXmin.ToString());
+           INI.Write("Entr", "masshXmax", masshXmax.ToString());
+           INI.Write("Entr", "masshYmin", masshYmin.ToString());
+           INI.Write("Entr", "masshYmax", masshYmax.ToString());
            
            
        }
@@ -1269,10 +1337,13 @@ namespace Entropia
 
 
 
-            // MessageBox.Show("MAX " + maxArray(sho).ToString() + " " + minArray(sho).ToString());
+            // MessageBox.Show("MAX_X " + maxArray(pohidnaS).ToString() + " " + minArray(pohidnaS).ToString());
+            // MessageBox.Show("MAX_Y " + maxArray(sho).ToString() + " " + minArray(sho).ToString());
 
-             double[] normPohidna = norma(pohidnaS, minArray(pohidnaS), maxArray(pohidnaS));
-             double[] normNewsho = norma(sho, 62.72, 136.4211);
+             double[] normPohidna = norma(pohidnaS,masshXmin,masshXmax);
+             double[] normNewsho = norma(sho, masshYmin, masshYmax);
+
+             //double[] normPohidna = norma(pohidnaS, minArray(pohidnaS), maxArray(pohidnaS));
              //double[] normNewsho = norma(sho,minArray(sho), maxArray(sho));
             double[] shoVO = sho;
 
@@ -1366,8 +1437,8 @@ namespace Entropia
             chartPortret.ChartAreas[0].AxisX.TitleAlignment = StringAlignment.Far;
             chartPortret.ChartAreas[0].AxisY.TitleAlignment = StringAlignment.Far;
 
-            chartPortret2.Series["Series1"].Points.DataBindXY(normPohidna, newsho);
-            chartPortret2.Series["Series2"].Points.DataBindXY(normPohidna, newsho);
+         //   chartPortret2.Series["Series1"].Points.DataBindXY(normPohidna, newsho);
+         //   chartPortret2.Series["Series2"].Points.DataBindXY(normPohidna, newsho);
 
 
             // chartPortret.Series["Series1"].Points.DataBindXY(newsho, pohidnaS);
@@ -1384,6 +1455,16 @@ namespace Entropia
             chartPortret2.Series["Series2"].Color = Color.Red;
 
 
+            double sredX = sred(normPohidna);
+            double sredY = sred(newsho);
+            boxX.Text = Math.Round(sredX,3).ToString();
+            boxY.Text = Math.Round(sredY,3).ToString();
+           // MessageBox.Show(sredX.ToString() + " " + sredY.ToString());
+            double[] sredinaX = { sredX };
+            double[] sredinaY = { sredY };
+            chartPortret2.Series["Series4"].Points.DataBindXY(sredinaX, sredinaY);
+            chartPortret2.Series["Series4"].MarkerSize = 10;
+            //MessageBox.Show(minArray(normPohidna)+" "+maxArray(normPohidna));
            // MessageBox.Show((angle(2, 8, 5, 1, 1, 2)).ToString());
 
            //VO(normPohidna, newsho, chartPortret,0);
@@ -1420,16 +1501,61 @@ namespace Entropia
 
 
             chartPortret2.Series["Series3"].Points.DataBindXY(VOx, VOy);
+           // chartPortret2.Series["Series3"].ChartType = SeriesChartType.Line;
+            chartPortret2.Series["Series3"].Color = Color.Black;
 
-            chartPortret2.Series["Series3"].Color = Color.Indigo;
+            //MessageBox.Show(square(data).ToString());
+
+            PointD[] dataTest = new PointD[a.Count-1];
+            for (int i = 0; i < a.Count - 1; i++)
+            {
+                dataTest[i].X = VOx[i];
+                dataTest[i].Y = VOy[i];
+            }
 
 
+            boxSquare.Text = Math.Round(square(dataTest), 3).ToString();
 
 
         }
 
 
+        public double square(PointD[] data)
+        {
+            double s = 0;
 
+        /*
+            for (int i = 1; i < data.Length-1; i++)
+            {
+                s = s + geron(dist(data[0], data[i]), dist(data[0], data[i + 1]), dist(data[i], data[i+1]));    
+            }
+        */
+
+            for (int i = 1; i < data.Length-1; i++)
+            {
+                s = s + triangleSquare(data[0], data[i], data[i + 1]);
+               // MessageBox.Show(triangleSquare(data[0], data[i], data[i + 1]).ToString());
+            }
+
+            return Math.Abs(s);
+        }
+
+        public double triangleSquare(PointD a, PointD b, PointD c)
+        {
+            double s = 0;
+           // MessageBox.Show(a.X.ToString() + " " + a.Y.ToString() + " " + b.X.ToString() + " " + a.Y.ToString());
+            s=((a.X-c.X)*(b.Y-c.Y)-(b.X-c.X)*(a.Y-c.Y))/2;
+
+            return s;
+        }
+
+        public double geron(double a, double b, double c)
+        {
+            double s = 0;
+            double p = (a + b + c) / 2;
+            s = Math.Sqrt(p*(p-a)*(p-b)*(p-c));
+            return s;
+        }
 
         public List<int> ConvexHullJarvis(PointD[] mas)
         {
@@ -1857,12 +1983,17 @@ namespace Entropia
         private static double minArray(double[] array)
         {
             double min = array[0];
-
+            int iter = 0;
             for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] < min)
+                {
                     min = array[i];
+                    iter = i;
+                }
             }
+
+           // MessageBox.Show(iter.ToString());
             return min;
         }
 
@@ -2098,6 +2229,72 @@ namespace Entropia
             chartPortret2.Series["Series1"].Color = color;
             
             
+
+        }
+
+        private void chartPortret2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            masshXmin = masshXmin + 0.05;
+            masshXmax = masshXmax - 0.05;
+            calculate();
+        }
+
+        private void btnMinusX_Click(object sender, EventArgs e)
+        {
+            masshXmin = masshXmin - 0.05;
+            masshXmax = masshXmax + 0.05;
+            calculate();
+        }
+
+        private void btnPlusY_Click(object sender, EventArgs e)
+        {
+            masshYmin = masshYmin + 5;
+            masshYmax = masshYmax - 5;
+            calculate();
+        }
+
+        private void btnMinusY_Click(object sender, EventArgs e)
+        {
+            masshYmin = masshYmin - 5;
+            masshYmax = masshYmax + 5;
+            calculate();
+        }
+
+        private void chartPortret2_Paint(object sender, PaintEventArgs e)
+        {
+            var graphics = e.Graphics;
+
+            GraphicsPath gp = new GraphicsPath(FillMode.Winding);
+            GraphicsPath gp2 = new GraphicsPath(FillMode.Alternate);
+
+            Axis ax = chartPortret2.ChartAreas[0].AxisX;
+            Axis ay = chartPortret2.ChartAreas[0].AxisY;
+
+            PointF[] points =
+                 chartPortret2
+                 .Series["Series3"]
+                 .Points
+                 .Select(x =>
+                        new PointF
+                        {
+                            X = (float)ax.ValueToPixelPosition(x.XValue),
+                            Y = (float)ay.ValueToPixelPosition(x.YValues[0])
+                        })
+                 .ToArray();
+
+            gp.AddLines(points);
+
+            using (SolidBrush brush = new SolidBrush(Color.FromArgb(85,0,0,255)))
+                graphics.FillPath(brush, gp);
+
+            //Color.FromArgb(1,Color.Blue)
+           
+            gp.Dispose();
 
         }
     }

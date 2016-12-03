@@ -51,10 +51,11 @@
             System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.labStatus = new System.Windows.Forms.Label();
@@ -88,6 +89,10 @@
             this.chartEntr2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartEntr1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnPlusY = new System.Windows.Forms.Button();
+            this.btnMinusY = new System.Windows.Forms.Button();
+            this.btnMinusX = new System.Windows.Forms.Button();
+            this.btnPlusX = new System.Windows.Forms.Button();
             this.chartPortret2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.labStatus2 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -99,10 +104,10 @@
             this.checkLine = new System.Windows.Forms.CheckBox();
             this.rbPor = new System.Windows.Forms.RadioButton();
             this.rbVO = new System.Windows.Forms.RadioButton();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.boxY = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.boxX = new System.Windows.Forms.TextBox();
+            this.boxSquare = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -562,6 +567,10 @@
             // tabPage3
             // 
             this.tabPage3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage3.Controls.Add(this.btnPlusY);
+            this.tabPage3.Controls.Add(this.btnMinusY);
+            this.tabPage3.Controls.Add(this.btnMinusX);
+            this.tabPage3.Controls.Add(this.btnPlusX);
             this.tabPage3.Controls.Add(this.chartPortret2);
             this.tabPage3.Controls.Add(this.labStatus2);
             this.tabPage3.Controls.Add(this.label13);
@@ -576,6 +585,46 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Фазовый портрет";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnPlusY
+            // 
+            this.btnPlusY.Location = new System.Drawing.Point(356, 46);
+            this.btnPlusY.Name = "btnPlusY";
+            this.btnPlusY.Size = new System.Drawing.Size(25, 23);
+            this.btnPlusY.TabIndex = 36;
+            this.btnPlusY.Text = "+";
+            this.btnPlusY.UseVisualStyleBackColor = true;
+            this.btnPlusY.Click += new System.EventHandler(this.btnPlusY_Click);
+            // 
+            // btnMinusY
+            // 
+            this.btnMinusY.Location = new System.Drawing.Point(356, 75);
+            this.btnMinusY.Name = "btnMinusY";
+            this.btnMinusY.Size = new System.Drawing.Size(26, 23);
+            this.btnMinusY.TabIndex = 35;
+            this.btnMinusY.Text = "-";
+            this.btnMinusY.UseVisualStyleBackColor = true;
+            this.btnMinusY.Click += new System.EventHandler(this.btnMinusY_Click);
+            // 
+            // btnMinusX
+            // 
+            this.btnMinusX.Location = new System.Drawing.Point(668, 376);
+            this.btnMinusX.Name = "btnMinusX";
+            this.btnMinusX.Size = new System.Drawing.Size(25, 23);
+            this.btnMinusX.TabIndex = 34;
+            this.btnMinusX.Text = "-";
+            this.btnMinusX.UseVisualStyleBackColor = true;
+            this.btnMinusX.Click += new System.EventHandler(this.btnMinusX_Click);
+            // 
+            // btnPlusX
+            // 
+            this.btnPlusX.Location = new System.Drawing.Point(699, 376);
+            this.btnPlusX.Name = "btnPlusX";
+            this.btnPlusX.Size = new System.Drawing.Size(26, 23);
+            this.btnPlusX.TabIndex = 33;
+            this.btnPlusX.Text = "+";
+            this.btnPlusX.UseVisualStyleBackColor = true;
+            this.btnPlusX.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // chartPortret2
             // 
@@ -605,12 +654,23 @@
             series11.IsVisibleInLegend = false;
             series11.Legend = "Legend1";
             series11.Name = "Series3";
+            series12.BorderWidth = 6;
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series12.EmptyPointStyle.BorderWidth = 3;
+            series12.IsVisibleInLegend = false;
+            series12.Legend = "Legend1";
+            series12.MarkerColor = System.Drawing.Color.Red;
+            series12.Name = "Series4";
             this.chartPortret2.Series.Add(series9);
             this.chartPortret2.Series.Add(series10);
             this.chartPortret2.Series.Add(series11);
+            this.chartPortret2.Series.Add(series12);
             this.chartPortret2.Size = new System.Drawing.Size(342, 324);
             this.chartPortret2.TabIndex = 32;
             this.chartPortret2.Text = "chart1";
+            this.chartPortret2.Click += new System.EventHandler(this.chartPortret2_Click);
+            this.chartPortret2.Paint += new System.Windows.Forms.PaintEventHandler(this.chartPortret2_Paint);
             // 
             // labStatus2
             // 
@@ -647,21 +707,21 @@
             this.chartPortret.Legends.Add(legend6);
             this.chartPortret.Location = new System.Drawing.Point(12, 46);
             this.chartPortret.Name = "chartPortret";
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series12.IsVisibleInLegend = false;
-            series12.Legend = "Legend1";
-            series12.MarkerColor = System.Drawing.Color.Blue;
-            series12.Name = "Series1";
             series13.ChartArea = "ChartArea1";
-            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series13.IsVisibleInLegend = false;
             series13.Legend = "Legend1";
-            series13.MarkerSize = 4;
-            series13.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series13.Name = "Series2";
-            this.chartPortret.Series.Add(series12);
+            series13.MarkerColor = System.Drawing.Color.Blue;
+            series13.Name = "Series1";
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series14.IsVisibleInLegend = false;
+            series14.Legend = "Legend1";
+            series14.MarkerSize = 4;
+            series14.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series14.Name = "Series2";
             this.chartPortret.Series.Add(series13);
+            this.chartPortret.Series.Add(series14);
             this.chartPortret.Size = new System.Drawing.Size(342, 324);
             this.chartPortret.TabIndex = 14;
             this.chartPortret.Text = "chart1";
@@ -672,10 +732,10 @@
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Controls.Add(this.rbPor);
             this.panel2.Controls.Add(this.rbVO);
-            this.panel2.Controls.Add(this.textBox3);
+            this.panel2.Controls.Add(this.boxY);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.boxX);
+            this.panel2.Controls.Add(this.boxSquare);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Location = new System.Drawing.Point(745, 46);
             this.panel2.Name = "panel2";
@@ -737,13 +797,13 @@
             this.rbVO.Text = "Выпуклая оболочка";
             this.rbVO.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // boxY
             // 
-            this.textBox3.Location = new System.Drawing.Point(77, 237);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(52, 20);
-            this.textBox3.TabIndex = 11;
-            this.textBox3.Text = "91";
+            this.boxY.Location = new System.Drawing.Point(77, 237);
+            this.boxY.Name = "boxY";
+            this.boxY.Size = new System.Drawing.Size(52, 20);
+            this.boxY.TabIndex = 11;
+            this.boxY.Text = "91";
             // 
             // label7
             // 
@@ -754,22 +814,22 @@
             this.label7.TabIndex = 4;
             this.label7.Text = "Площадь";
             // 
-            // textBox4
+            // boxX
             // 
-            this.textBox4.Location = new System.Drawing.Point(19, 237);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(52, 20);
-            this.textBox4.TabIndex = 9;
-            this.textBox4.Text = "-0.5";
+            this.boxX.Location = new System.Drawing.Point(19, 237);
+            this.boxX.Name = "boxX";
+            this.boxX.Size = new System.Drawing.Size(52, 20);
+            this.boxX.TabIndex = 9;
+            this.boxX.Text = "-0.5";
             // 
-            // textBox1
+            // boxSquare
             // 
-            this.textBox1.Location = new System.Drawing.Point(73, 177);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(56, 20);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "125";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            this.boxSquare.Location = new System.Drawing.Point(73, 177);
+            this.boxSquare.Name = "boxSquare";
+            this.boxSquare.Size = new System.Drawing.Size(56, 20);
+            this.boxSquare.TabIndex = 5;
+            this.boxSquare.Text = "125";
+            this.boxSquare.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // label10
             // 
@@ -920,10 +980,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox boxY;
+        private System.Windows.Forms.TextBox boxX;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox boxSquare;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnSaveS;
         private System.Windows.Forms.Button btnSaveSE;
@@ -954,6 +1014,10 @@
         private System.Windows.Forms.ToolStripMenuItem выбратьЦветГрафиковToolStripMenuItem;
         private System.Windows.Forms.ColorDialog colorChoose;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartPortret2;
+        private System.Windows.Forms.Button btnPlusY;
+        private System.Windows.Forms.Button btnMinusY;
+        private System.Windows.Forms.Button btnMinusX;
+        private System.Windows.Forms.Button btnPlusX;
 
     }
 }
